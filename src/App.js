@@ -1,12 +1,22 @@
 import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import TopNavbar from './components/TopNavbar';
+import SideNavbar from './components/SideNavbar';
+
 
 function App() {
 
     return (
-        <div>
-            <h1>Hola Mundo desde React</h1>
-            <p> Creando mi primera aplicacion desde React y utilizando el React DOM</p>
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/*" element={
+                    <div>
+                        <TopNavbar />
+                        <SideNavbar/> 
+                    </div>
+                }/>
+            </Routes>
+        </Router>
     );
 }
 
