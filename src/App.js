@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
@@ -15,7 +15,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/login" element={<Login />} />
-                <Route path="/*" element={
+                        {/* Redireccionar desde la raíz */}
+                        <Route path="/" element={<Navigate to="/home" replace />} />
+                        <Route path="/*" element={
                     <div>
                         <TopNavbar />
                         <SideNavbar />
