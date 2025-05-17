@@ -13,7 +13,10 @@ const handleOnEdit = (id) => {
     setForm(books[id]);
     setEditIndex(id);
 }
-const handleOnDelete = (index) => {}
+const handleOnDelete = (id) => {
+const updatedBooks = books.filter((book, index) => index !== id);
+setBooks(updatedBooks);
+}
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -66,7 +69,8 @@ const handleOnDelete = (index) => {}
                             <td> 
                                 <button className="btn btn-sm btn-warning me-2" 
                                 onClick={()=> handleOnEdit(id)}>Edit</button>
-                                <button className="btn btn-sm btn-danger" onClick={()=>handleOnDelete}>Delete</button>
+                                <button className="btn btn-sm btn-danger" 
+                                onClick={()=>handleOnDelete(id)}>Delete</button>
                             </td>
                         </tr>
                        ))
