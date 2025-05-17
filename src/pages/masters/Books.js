@@ -6,9 +6,14 @@ function Books() {
     const [form, setForm] = useState({'title':'', 'author':'',
         'description':'','publishDate':''});
 
-        const handleOnChange = (e) => {
+const handleOnChangeInputs = (e) => {
             setForm({...form,[e.target.name]: e.target.value});
-        }
+}
+const handleOnEdit = (id) => {
+    setForm(books[id]);
+    setEditIndex(id);
+}
+const handleOnDelete = (index) => {}
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +24,7 @@ function Books() {
             setEditIndex(null);
         }else{
             setBooks([...books, form]);
+            console.log(form);
         }
         setForm({'title':'', 'author':'',
             'description':'','publishDate':''});
@@ -33,7 +39,7 @@ function Books() {
                             key={campo} 
                             name={campo} 
                             value={form[campo]} 
-                            onChange={handleOnChange}
+                            onChange={handleOnChangeInputs}
                             placeholder={campo}
                             className="form-control mb-2"
                         /> 
@@ -58,8 +64,9 @@ function Books() {
                             <td> {book.author} </td>
                             <td> {book.description} </td>
                             <td> 
-                                <button className="btn btn-sm btn-warning me-2" onClick={()=>{}}>Edit</button>
-                                <button className="btn btn-sm btn-danger" onClick={()=>{}}>Delete</button>
+                                <button className="btn btn-sm btn-warning me-2" 
+                                onClick={()=> handleOnEdit(id)}>Edit</button>
+                                <button className="btn btn-sm btn-danger" onClick={()=>handleOnDelete}>Delete</button>
                             </td>
                         </tr>
                        ))
