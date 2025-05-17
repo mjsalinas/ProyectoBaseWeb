@@ -4,7 +4,7 @@ function Books() {
   return (
     <div>
       <h1>Books</h1>
-      <p>This is the book page</p>
+      <p>Thi the book page</p>
     </div>
   );
 }
