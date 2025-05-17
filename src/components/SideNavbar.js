@@ -1,21 +1,17 @@
-import { Link } from "react-router-dom";
-import { FaHome, FaUser } from "react-icons/fa";
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 function SideNavbar() {
-    return(
-        <div className="bg-secondary position-fixed vh-100 d-flex flex-column p-3"
-        style={{ width: '220px' }}
-        >
-            <ul className="nav flex-column mt-3">
-                <li className="nav-item">
-                <Link to="/" className="nav-link text-white">
-                        <FaHome className="me-2" />Inicio
-                </Link>
-                <Link to="/" className="nav-link text-white">
-                        <FaUser className="me-2" />Perfil
-                </Link>
-                </li>
-            </ul>
-        </div>
-    )
+  return (
+    <div className="bg-dark position-fixed" style={{ top: '56px', width: '200px', height: '100%' }}>
+      <ul className="nav flex-column mt-3">
+        <li><Link to="/" className="nav-link text-white">Dashboard</Link></li>
+        <li><Link to="/perfil" className="nav-link text-white">Perfil</Link></li>
+        <li><Link to="/libros" className="nav-link text-white">Libros</Link></li>
+        <li><Link to="/registro" className="nav-link text-white">Registro</Link></li>
+      </ul>
+    </div>
+  );
 }
+
 export default SideNavbar;

@@ -7,8 +7,10 @@ import Home from './pages/Home';
 
 
 function App() {
-    const [items, setItems] = useState([{title:"Progra Web", 
-        description:"Clase de los sabados"}]);
+    const [items, setItems] = useState([{
+        title: "Progra Web",
+        description: "Clase de los sabados"
+    }]);
     return (
         <Router>
             <Routes>
@@ -17,10 +19,12 @@ function App() {
                     <div>
                         <TopNavbar />
                         <SideNavbar />
-                        <div style={{ marginLeft: '300px', marginTop: '56px', 
-                            padding: '20px', backgroundColor:'red' }}>
+                        <div style={{
+                            marginLeft: '210px', marginTop: '60px',
+                            padding: '20px'
+                        }}>
                             <Routes>
-                                <Route path="/home" element={<Home items={items} />} />
+                                <Route path="/home" element={<Home />} />
                             </Routes>
                         </div>
                     </div>
