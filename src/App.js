@@ -4,6 +4,7 @@ import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Books from './pages/masters/Books';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                         }}>
                             <Routes>
                                 <Route path="/home" element={<Home />} />
+                                <Route path="/books" element={<Books />} />
                             </Routes>
                         </div>
                     </div>

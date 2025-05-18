@@ -35,7 +35,7 @@ const handleOnBlur = () => {
                         onChange={(event) => { setEmail(event.target.value)}} 
                         onBlur={handleOnBlur}
                         />
-                   { inputError && <div className="text-danger mb-3">{inputError}</div>}
+                    { inputError && <div className="text-danger mb-3">{inputError}</div>}
                     <button
                         className="btn btn-primary w-100"
                         type="submit"

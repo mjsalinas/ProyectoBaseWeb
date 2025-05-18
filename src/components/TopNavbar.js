@@ -14,7 +14,7 @@ function TopNavbar() {
           </button>
           <ul className="dropdown-menu dropdown-menu-end">
             <li><button className="dropdown-item" onClick={() => navigate('/perfil')}>Perfil</button></li>
-            <li><button className="dropdown-item" onClick={() => navigate('/libros')}>Gestión de Libros</button></li>
+            <li><button className="dropdown-item" onClick={() => navigate('/books')}>Gestión de Libros</button></li>
           </ul>
         </div>
       </div>
