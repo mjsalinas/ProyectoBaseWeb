@@ -2,7 +2,8 @@
   "name": "miproyectoreact",
   "version": "1.0.0",
   "scripts": {
-    "start": "parcel public/index.html",
+    "free-port": "for /f \"tokens=5\" %a in ('netstat -ano ^| findstr :1234') do taskkill /F /PID %a",
+    "start":  "start brave http://localhost:1234 && parcel public/index.html",
     "build": "parcel build public/index.html"
   },
   "keywords": [],
