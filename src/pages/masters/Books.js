@@ -61,20 +61,17 @@ setBooks(updatedBooks);
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((book, id)=>(
-                        <tr key={id}>
-                            <td> {book.title} </td>
-                            <td> {book.author} </td>
-                            <td> {book.description} </td>
-                            <td> 
-                                <button className="btn btn-sm btn-warning me-2" 
-                                onClick={()=> handleOnEdit(id)}>Edit</button>
-                                <button className="btn btn-sm btn-danger" 
-                                onClick={()=>handleOnDelete(id)}>Delete</button>
+                    {books.map((book, index) => (
+                        <tr key={index}>
+                            <td>{book.title}</td>
+                            <td>{book.author}</td>
+                            <td>{book.description}</td>
+                            <td>
+                                <button onClick={() => handleOnEdit(index)}>Editar</button>
+                                <button onClick={() => handleOnDelete(index)}>Eliminar</button>
                             </td>
                         </tr>
-                       ))
-                    }
+                    ))}
                 </tbody>
             </table>
 
