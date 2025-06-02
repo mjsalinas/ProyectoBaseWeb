@@ -7,8 +7,8 @@ function SideNavbar() {
       <ul className="nav flex-column mt-3">
         <li><Link to="/" className="nav-link text-white">Dashboard</Link></li>
         <li><Link to="/" className="nav-link text-white">Perfil</Link></li>
-        <li><Link to="/books" className="nav-link text-white">Libros</Link></li>
-        <li><Link to="/" className="nav-link text-white">Registro</Link></li>
+        <li><Link to="/books" className="nav-link text-white">Ingresar nuevas recetas</Link></li>
+        <li><Link to="/" className="nav-link text-white">Recetas</Link></li>
       </ul>
     </div>
   );
