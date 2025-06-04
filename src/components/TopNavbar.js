@@ -5,17 +5,37 @@ function TopNavbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: '#436146' }}>
-      <div className="container-fluid">
-        <span className="navbar-brand mx-auto">Mi Biblioteca con React</span>
-        <div className="dropdown">
-          <button className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
-            Usuario
+    <nav
+      className="navbar fixed-top navbar-expand-lg"
+      style={{
+        backgroundColor: '#ffffff',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        borderBottom: '2px solid #d3e4cd'
+      }}
+    >
+      <div className="container-fluid px-4">
+        {/* Logo o texto izquierdo */}
+        <span
+          className="navbar-brand fw-bold text-success"
+          style={{ fontSize: '1.3rem' }}
+        >
+          🥬 La Receta de la Abuela
+        </span>
+
+        {/* Enlaces a la derecha */}
+        <div className="d-flex gap-3">
+          <button
+            className="btn btn-outline-success btn-sm"
+            onClick={() => navigate('/')}
+          >
+            Inicio
           </button>
-          <ul className="dropdown-menu dropdown-menu-end">
-            <li><button className="dropdown-item" onClick={() => navigate('/perfil')}>Perfil</button></li>
-            <li><button className="dropdown-item" onClick={() => navigate('/books')}>Gestión de Libros</button></li>
-          </ul>
+          <button
+            className="btn btn-outline-success btn-sm"
+            onClick={() => navigate('/recetas')}
+          >
+            Nueva Receta
+          </button>
         </div>
       </div>
     </nav>

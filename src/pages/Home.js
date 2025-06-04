@@ -2,19 +2,28 @@ import CardItem from "../components/CardItem"
 import React, { useState } from 'react';
 
 function Home() {
-    const libros = [
-        {title:'El Principito', author:'Antoine de Saint-Exupéry', image:'https://www.editorialsaid.cl/wp-content/uploads/2024/08/El-Principito-Antoine-de-Saint-Exupery_1-600x842.jpg'},
-        {title:'Cien años de soledad', author:'Gabriel García Márquez', image:'https://tunovela.es/wp-content/uploads/Cien-anos-de-soledad-de-Gabriel-Garcia-Marquez-resumen-y-analisis-197x300.jpg'},
-        {title:'Don Quijote de la Mancha', author:'Miguel de Cervantes', image:'https://www.capsulasliterarias.com/wp-content/webp-express/webp-images/uploads/2023/05/El-Ingenioso-Hidalgo-Don-Quijote-de-la-Mancha-200x300.png.webp'},
-        {title:'1984', author:'George Orwell', image:'https://tunovela.es/wp-content/uploads/712VUvDJGiL-197x300.jpg'},
-    ];
+    const receta = [
+  {
+    nombre: 'Spaghetti',
+    ingredientes: ['Pasta', 'Tomate', 'Queso'],
+    preparacion: 'Hervir la pasta y añadir salsa.',
+    image: 'https://mandolina.co/wp-content/uploads/2020/11/espaguetis-rojos-con-tomate-1200x720.jpg'
+  },
+  {
+    nombre: 'Ensalada',
+    ingredientes: ['Lechuga', 'Tomate', 'Aceite de oliva'],
+    preparacion: 'Mezclar todos los ingredientes.',
+    image: 'https://www.recetas-chilenas.com/base/stock/Recipe/ensalada-de-lechuga-y-tomate/ensalada-de-lechuga-y-tomate_web.jpg.webp'
+  }
+];
+
       return (
         <div className="container mt-4">
-          <h2>Libros Disponibles</h2>
+          <h2>MENU DE RECETAS</h2>
           <div className="row">
-            {libros.map((libro, idx) => (
+            {receta.map((receta, idx) => (
               <div className="col-md-4 mb-4" key={idx}>
-                <CardItem {...libro} />
+                <CardItem {...receta} />
               </div>
             ))}
           </div>

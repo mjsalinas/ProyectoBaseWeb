@@ -1,12 +1,21 @@
 import React from 'react';
 
-function CardItem({ title, author, image }) {
+function CardItem({ nombre, ingredientes, preparacion, image }) {
   return (
     <div className="card h-100">
-      <img src={image} className="card-img-top" alt={title} />
+      {image && <img src={image} className="card-img-top" alt={nombre} />}
       <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text">Autor: {author}</p>
+        <h5 className="card-title">{nombre}</h5>
+        
+        <h6>Ingredientes:</h6>
+        <ul>
+          {ingredientes.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+
+        <h6>Preparación:</h6>
+        <p>{preparacion}</p>
       </div>
     </div>
   );

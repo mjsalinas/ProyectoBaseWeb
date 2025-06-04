@@ -4,7 +4,7 @@ import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Books from './pages/masters/Books';
+import Recetas from './pages/masters/Recetas';
 
 
 function App() {
@@ -19,18 +19,13 @@ function App() {
                 <Route path="/*" element={
                     <div>
                         <TopNavbar />
-                        <SideNavbar />
-                        <div style={{
-                            marginLeft: '210px', marginTop: '60px',
-                            padding: '20px'
-                        }}>
+                        <div style={{ marginTop: '70px' }}></div>
                             <Routes>
                                 <Route path="/" element={<Home />} />
-                                <Route path="/books" element={<Books />} />
+                                <Route path="/recetas" element={<Recetas />} />
 
                             </Routes>
                         </div>
-                    </div>
                 } />
             </Routes>
         </Router>
