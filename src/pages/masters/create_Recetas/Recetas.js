@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../Recetas.css";
 
-    function Recetas() {
+    function Recetas({recetas, setRecetas}) {
     const [editIndex, setEditIndex] = useState(null);
-    const [recetas, setRecetas] = useState([]);
+    
     const [form, setForm] = useState({
         image: null,
         title: '',
