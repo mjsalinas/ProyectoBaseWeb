@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { registerUser } from '../api/authService';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -8,7 +9,14 @@ function Register() {
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
-   
+    e.preventDefault();
+    try {
+      const res = await registerUser(email, password);
+      alert("usuario registrado");
+    }catch (err){
+      alert("error al registrar");
+      console.log(err);
+    }
   };
 
   return (
