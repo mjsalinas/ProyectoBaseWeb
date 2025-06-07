@@ -8,21 +8,19 @@ function TopNavbar() {
     <nav
       className="navbar fixed-top navbar-expand-lg"
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'beige',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         borderBottom: '2px solid #d3e4cd'
       }}
     >
       <div className="container-fluid px-4">
-        {/* Logo o texto izquierdo */}
+        
         <span
           className="navbar-brand fw-bold text-success"
           style={{ fontSize: '1.3rem' }}
         >
-          🥬 La Receta de la Abuela
+        La Receta de la Abuela
         </span>
-
-        {/* Enlaces a la derecha */}
         <div className="d-flex gap-3">
           <button
             className="btn btn-outline-success btn-sm"

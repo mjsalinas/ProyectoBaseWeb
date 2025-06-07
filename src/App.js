@@ -9,8 +9,6 @@ import Recetas from './pages/masters/Recetas';
 
 function App() {
     const [items, setItems] = useState([{
-        title: "Progra Web",
-        description: "Clase de los sabados"
     }]);
     return (
         <Router>
