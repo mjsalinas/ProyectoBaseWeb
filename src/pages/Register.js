@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-
+  const handleRegister = async (e) => {
+   
   };
 
   return (
     <div className="container mt-5 col-md-4">
-      <h3 className="mb-3">Iniciar sesión</h3>
-      <form onSubmit={handleLogin}>
+      <h3 className="mb-3">Crear cuenta</h3>
+      <form onSubmit={handleRegister}>
         <input type="email" className="form-control mb-2" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" className="form-control mb-2" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button className="btn btn-primary w-100">Entrar</button>
+        <button className="btn btn-success w-100">Registrarse</button>
       </form>
-      {error && <p className="text-danger mt-2">{error}</p>}
-      <p className="mt-3 text-center">¿No tiene cuenta? <Link to="/registro">Regístrese</Link></p>
+      {mensaje && <p className="mt-3">{mensaje}</p>}
+      <p className="mt-3 text-center">¿Ya tiene cuenta? <Link to="/">Iniciar sesión</Link></p>
     </div>
   );
 }
 
-export default Login;
+export default Register;

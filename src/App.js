@@ -4,7 +4,8 @@ import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Books from './pages/masters/Books';
+import Register from './pages/Register';
+// import Books from './pages/masters/Books';
 
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/*" element={
+                <Route path="/" element={<Login />} />
+                <Route path="/registro" element={<Register />} />
+                <Route path="/home" element={
                     <div>
                         <TopNavbar />
                         <SideNavbar />
@@ -26,7 +28,7 @@ function App() {
                         }}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
-                                <Route path="/books" element={<Books />} />
+                                {/* <Route path="/books" element={<Books />} /> */}
 
                             </Routes>
                         </div>
