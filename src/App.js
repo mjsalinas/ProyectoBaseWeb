@@ -4,7 +4,7 @@ import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Recetas from './pages/masters/Recetas';
+import Recetas from './pages/masters/create_Recetas/Recetas';
 
 
 function App() {

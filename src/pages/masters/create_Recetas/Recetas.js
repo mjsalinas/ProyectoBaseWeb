@@ -1,12 +1,15 @@
 import { useState } from "react";
+import "../Recetas.css";
 
     function Recetas() {
     const [editIndex, setEditIndex] = useState(null);
     const [recetas, setRecetas] = useState([]);
     const [form, setForm] = useState({
+        image: null,
         title: '',
         ingredientes: '',
         preparacion: ''
+
     });
 
     const handleOnChangeInputs = (e) => {
@@ -33,14 +36,37 @@ import { useState } from "react";
         } else {
         setRecetas([...recetas, form]);
         }
-        setForm({ title: '', ingredientes: '', preparacion: '' });
+        setForm({ image: null, title: '', ingredientes: '', preparacion: '' });
     };
+    // Manejador específico para el input de tipo file (imagen)
+    const handleOnImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        setForm((prev) => ({
+            ...prev,
+            image: file
+         }));
+        }
+      };
 
     return (
         <div className="container mt-4">
         <h2>Agregar nueva Receta</h2>
 
         <form onSubmit={handleOnSubmit} className="mb-4">
+            {/* --- INPUT para cargar la imagen --- */}
+            <div className="contenedor-Upload">
+            <label className="label-img">Imagen de portada: </label>
+            <input
+                className="input-img"
+                id="image"
+                name="image"
+                type="file"
+                accept="image/*"
+                onChange={handleOnImageChange}
+            />
+            </div>
+        
             <input
             name="title"
             value={form.title}
@@ -75,6 +101,7 @@ import { useState } from "react";
         <table className="table table-bordered">
             <thead className="table-dark">
             <tr>
+                <th>Imagen</th>
                 <th>Título</th>
                 <th>Ingredientes</th>
                 <th>Preparación</th>
@@ -88,6 +115,22 @@ import { useState } from "react";
             ) : (
                 recetas.map((recetas, index) => (
                 <tr key={index}>
+                    <td>
+                {recetas.image ? (
+                  // Si es URL (string) o File, lo muestro con createObjectURL:
+                  <img
+                    src={
+                      recetas.image instanceof File
+                        ? URL.createObjectURL(recetas.image)
+                        : recetas.image
+                    }
+                    alt={`Recetas ${index}`}
+                    style={{ width: '80px', objectFit: 'cover' }}
+                  />
+                ) : (
+                  '–'
+                )}
+              </td>
                     <td>{recetas.title}</td>
                     <td style={{ whiteSpace: 'pre-wrap' }}>{recetas.ingredientes}</td>
                     <td style={{ whiteSpace: 'pre-wrap' }}>{recetas.preparacion}</td>
