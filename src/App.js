@@ -5,6 +5,7 @@ import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Recetas from './pages/masters/create_Recetas/Recetas';
+import Register from './pages/masters/Register';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/login" element={<Login />} />
+                <Route path="/registro" element={<Register />} />
                 <Route path="/*" element={
                     <div>
                         <TopNavbar />

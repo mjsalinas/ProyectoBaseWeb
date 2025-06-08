@@ -19,7 +19,7 @@ function Home({recetas}) {
 
       return (
         <div className="container mt-4">
-      <h2 style={{ paddingBottom: '20px', fontWeight: 'bold' }}>Blogs Disponibles</h2>
+      <h2 style={{ paddingBottom: '20px', fontWeight: 'bold' }}>Recetas Disponibles</h2>
       <div className="row">
         {recetas.length > 0 ? (
           recetas.map((receta, idx) => {
@@ -41,7 +41,7 @@ function Home({recetas}) {
 })
 
         ) : (
-          <p>No hay blogs para mostrar.</p>
+          <p>No hay receta para mostrar.</p>
         )}
       </div>
     </div>
