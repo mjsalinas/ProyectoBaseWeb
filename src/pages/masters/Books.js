@@ -17,7 +17,6 @@ const handleOnDelete = (id) => {
 const updatedBooks = books.filter((book, index) => index !== id);
 setBooks(updatedBooks);
 }
-
     const handleOnSubmit = (e) => {
         e.preventDefault();
         if(editIndex !== null){
