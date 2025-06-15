@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { registerUser } from '../api/authService';
+import { registerUser } from '../../api/authServices';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -25,10 +25,10 @@ function Register() {
       <form onSubmit={handleRegister}>
         <input type="email" className="form-control mb-2" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" className="form-control mb-2" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <p className="mt-3 text-center">¿No tiene cuenta? <Link to="/registro">Regístrese</Link></p>
+        <button className="btn btn-success w-100">Registrarse</button>
       </form>
       {mensaje && <p className="mt-3">{mensaje}</p>}
-      <p className="mt-3 text-center">¿Ya tiene cuenta? <Link to="/">Iniciar sesión</Link></p>
+      <p className="mt-3 text-center">¿Ya tiene cuenta? <Link to="/login">Iniciar sesión</Link></p>
     </div>
   );
 }

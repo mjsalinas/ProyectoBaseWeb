@@ -7,23 +7,23 @@ function Login() {
     const [inputError, setInputError] = useState(null);
     const navigate = useNavigate();
 
-    const handleOnClick = () => {
-        console.log("valor de email: " + email);
-        console.log("valor de password: " + password);
-    };
+  const handleLogin = async (e) => {
+      e.preventDefault();
+    try{
+      const res = await loginUser(email, password);
+      const user = res.data.user;
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("/");
+    }catch (err){
+           alert("error al iniciar sesion");
+      console.log(err);
+    }
+  };
 
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        navigate('/');
-    };
-
-    const handleOnBlur = () => {
-        if (email.includes('@')) {
-            setInputError(null);
-        } else {
-            setInputError('Correo o Costraseña invalida');
-        }
-    };
+  const handleGoogleLogin = async() => {
+    const {error} = await supabase.auth.signInWithOAuth({provider: "google"});
+    if (error) console.log(error);
+  }
 
     const handleRegister = () => {
         navigate('/register'); 
@@ -42,7 +42,7 @@ function Login() {
         >
             <div className="card p-4" style={{ width: '300px', background: 'beige' }}>
                 <h2 className="text-center mb-3" style={{ color: 'purple' }}>Iniciar Sesión</h2>
-                <form onSubmit={handleOnSubmit}>
+                <form onSubmit={handleLogin}>
                     <input
                         type="email"
                         className="form-control mb-3"
@@ -50,7 +50,7 @@ function Login() {
                         placeholder="Ingrese su correo"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onBlur={handleOnBlur}
+                        required
                     />
                     <input
                         type="password"
@@ -59,13 +59,14 @@ function Login() {
                         placeholder="Ingrese su contraseña"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                     {inputError && <div className="text-center text-white mb-3" style={{ background: 'red' }}>{inputError}</div>}
                     
                     <button
                         className="btn btn-success w-100 mb-2"
                         type="sumit"
-                        onClick={handleOnClick}
+                        onClick={handleLogin}
                         style={{
                             padding: '10px',
                             marginTop: '10px',
@@ -91,7 +92,7 @@ function Login() {
                     <button
                         type="button"
                         className="btn btn-primary w-100 mb-2"
-                        onClick={handleRegister}
+                        onClick={() => navigate('/registro')}
                         style={{
                             padding: '10px',
                             marginTop: '10px',
