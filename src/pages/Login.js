@@ -15,7 +15,7 @@ function Login() {
       const res = await loginUser(email, password);
       const user = res.data.user;
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
+      navigate("/home");
     }catch (err){
            alert("error al iniciar sesion");
       console.log(err);

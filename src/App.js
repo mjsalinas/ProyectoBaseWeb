@@ -5,6 +5,7 @@ import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import Books from './pages/masters/Books';
 // import Books from './pages/masters/Books';
 
 
