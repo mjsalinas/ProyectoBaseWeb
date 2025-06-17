@@ -15,9 +15,10 @@ function App() {
         const fetchRecetas= async()=>{
         try{
             const {data}= await getALLRecetas();
+            setRecetas(data);
             console.log(data); 
         }catch(err){
-            console.error("Error al obtener informacion:", err);
+            console.log("Error al obtener informacion:", err);
         }
     }
     fetchRecetas();

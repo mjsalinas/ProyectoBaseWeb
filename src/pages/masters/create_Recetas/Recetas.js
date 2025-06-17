@@ -22,7 +22,7 @@ import "../Recetas.css";
     };
 
     const handleOnDelete = (id) => {
-        const updatedRecetas = recetas.filter((_, index) => index !== id);
+        const updatedRecetas = recetas.filter((recetas, index) => index !== id);
         setRecetas(updatedRecetas);
     };
 

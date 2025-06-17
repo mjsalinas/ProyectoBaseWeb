@@ -2,21 +2,6 @@ import CardItem from "../components/CardItem"
 import React, { useState } from 'react';
 
 function Home({recetas}) {
-//     const receta = [
-//   {
-//     nombre: 'Spaghetti',
-//     ingredientes: ['Pasta', 'Tomate', 'Queso'],
-//     preparacion: 'Hervir la pasta y añadir salsa.',
-//     image: 'https://mandolina.co/wp-content/uploads/2020/11/espaguetis-rojos-con-tomate-1200x720.jpg'
-//   },
-//   {
-//     nombre: 'Ensalada',
-//     ingredientes: ['Lechuga', 'Tomate', 'Aceite de oliva'],
-//     preparacion: 'Mezclar todos los ingredientes.',
-//     image: 'https://www.recetas-chilenas.com/base/stock/Recipe/ensalada-de-lechuga-y-tomate/ensalada-de-lechuga-y-tomate_web.jpg.webp'
-//   }
-// ];
-
       return (
         <div className="container mt-4">
       <h2 style={{ paddingBottom: '20px', fontWeight: 'bold' }}>Recetas Disponibles</h2>
@@ -31,9 +16,9 @@ function Home({recetas}) {
   return (
     <div className="col-md-4 mb-4" key={idx}>
       <CardItem
-        nombre={receta.nombre}
-        ingredientes={receta.ingredientes}
-        preparacion={receta.preparacion}
+        title={receta.title}
+        ingredients={receta.ingredients}
+        preparation={receta.preparation}
         image={imageSrc}
       />
     </div>

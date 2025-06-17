@@ -13,11 +13,16 @@ function Register() {
     try {
       const res = await registerUser(email, password);
       alert("usuario registrado");
+      navigate("/login");
     }catch (err){
       alert("error al registrar");
       console.log(err);
     }
   };
+  const handleGoogleLogin = async() => {
+        const {error} = await supabase.auth.signInWithOAuth({provider: "google"});
+        if (error) console.log(error);
+    };
 
   return (
     <div className="container mt-5 col-md-4">
