@@ -1,53 +1,70 @@
 import { useState } from "react";
 import "../Recetas.css";
+import { createNewRecipes } from "../../../api/recetasServices";
+import { updatedRecipes } from "../../../api/recetasServices";
+import { supabase } from "../../../utils/supabaseClient";
 
-    function Recetas({recetas, setRecetas}) {
+    function Recipes({recipes, setRecipes}) {
     const [editIndex, setEditIndex] = useState(null);
     
     const [form, setForm] = useState({
         image: null,
         title: '',
-        ingredientes: '',
-        preparacion: ''
+        ingredients: '',
+        preparation: ''
 
     });
 
     const handleOnChangeInputs = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        setForm((prev)=>({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleOnEdit = (id) => {
-        setForm(recetas[id]);
+        setForm(recipes[id]);
         setEditIndex(id);
     };
 
     const handleOnDelete = (id) => {
-        const updatedRecetas = recetas.filter((recetas, index) => index !== id);
-        setRecetas(updatedRecetas);
+        const updatedRecipes = recipes.filter((recipes, index) => index !== id);
+        setRecipes(updatedRecipes);
+        if (editIndex === id) {
+      setEditIndex(null);
+      setForm();
+    }
     };
 
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async(e) => {
         e.preventDefault();
+        try{
         if (editIndex !== null) {
-        const updatedRecetas = [...recetas];
-        updatedRecetas[editIndex] = form;
-        setRecetas(updatedRecetas);
+            const{data}= await updatedRecipes(recipes[editIndex].id, form);
+            console.log("Receta actualizada", data);
+        const updated = [...recipes];    
+        updated[editIndex] = form;
+        setRecipes(updated);
         setEditIndex(null);
-        } else {
-        setRecetas([...recetas, form]);
+        }  else {
+        // Modo creación
+        const res = await createNewRecipes(form);
+        setRecipes([...recipes, form]);
+        console.log("Receta creada", data);
+        
+      }
+    } catch (err){
+      alert("error al agregar receta");
+      console.log(err);
+    } finally {
+      setForm({
+        image: '',
+      title: '',
+      ingredients: '',
+      preparation: ''
+      });
+      
         }
-        setForm({ image: null, title: '', ingredientes: '', preparacion: '' });
-    };
-    // Manejador específico para el input de tipo file (imagen)
-    const handleOnImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-        setForm((prev) => ({
-            ...prev,
-            image: file
-         }));
-        }
-      };
+};
+  
+    
 
     return (
         <div className="container mt-4">
@@ -61,9 +78,10 @@ import "../Recetas.css";
                 className="input-img"
                 id="image"
                 name="image"
-                type="file"
-                accept="image/*"
-                onChange={handleOnImageChange}
+                type="text"
+                placeholder="Pega la URL de la imagen aquí"
+                value={form.image || ""}
+                onChange={handleOnChangeInputs}
             />
             </div>
         
@@ -76,8 +94,8 @@ import "../Recetas.css";
             />
 
             <textarea
-            name="ingredientes"
-            value={form.ingredientes}
+            name="ingredients"
+            value={form.ingredients}
             onChange={handleOnChangeInputs}
             placeholder="Ingredientes"
             className="form-control mb-2"
@@ -85,8 +103,8 @@ import "../Recetas.css";
             />
 
             <textarea
-            name="preparacion"
-            value={form.preparacion}
+            name="preparation"
+            value={form.preparation}
             onChange={handleOnChangeInputs}
             placeholder="Preparación"
             className="form-control mb-3"
@@ -108,32 +126,32 @@ import "../Recetas.css";
             </tr>
             </thead>
             <tbody>
-            {recetas.length === 0 ? (
+            {recipes.length === 0 ? (
                 <tr>
                 <td colSpan="4" className="text-center">No hay recetas aún</td>
                 </tr>
             ) : (
-                recetas.map((recetas, index) => (
+                recipes.map((recipes, index) => (
                 <tr key={index}>
                     <td>
-                {recetas.image ? (
+                {recipes.image ? (
                   // Si es URL (string) o File, lo muestro con createObjectURL:
                   <img
                     src={
-                      recetas.image instanceof File
-                        ? URL.createObjectURL(recetas.image)
-                        : recetas.image
+                      recipes.image instanceof File
+                        ? URL.createObjectURL(recipes.image)
+                        : recipes.image
                     }
-                    alt={`Recetas ${index}`}
+                    alt={`Recipes ${index}`}
                     style={{ width: '80px', objectFit: 'cover' }}
                   />
                 ) : (
                   '–'
                 )}
               </td>
-                    <td>{recetas.title}</td>
-                    <td style={{ whiteSpace: 'pre-wrap' }}>{recetas.ingredientes}</td>
-                    <td style={{ whiteSpace: 'pre-wrap' }}>{recetas.preparacion}</td>
+                    <td>{recipes.title}</td>
+                    <td style={{ whiteSpace: 'pre-wrap' }}>{recipes.ingredients}</td>
+                    <td style={{ whiteSpace: 'pre-wrap' }}>{recipes.preparation}</td>
                     <td>
                     <button
                         onClick={() => handleOnEdit(index)}
@@ -157,4 +175,4 @@ import "../Recetas.css";
     );
     }
 
-    export default Recetas;
+    export default Recipes;

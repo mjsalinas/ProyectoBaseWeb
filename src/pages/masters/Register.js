@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { registerUser } from '../../api/authServices';
+import {supabase} from '../../utils/supabaseClient';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -19,10 +20,6 @@ function Register() {
       console.log(err);
     }
   };
-  const handleGoogleLogin = async() => {
-        const {error} = await supabase.auth.signInWithOAuth({provider: "google"});
-        if (error) console.log(error);
-    };
 
   return (
     <div className="container mt-5 col-md-4">

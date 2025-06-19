@@ -30,7 +30,7 @@ function TopNavbar() {
           </button>
           <button
             className="btn btn-outline-success btn-sm"
-            onClick={() => navigate('/recetas')}
+            onClick={() => navigate('/recipes')}
           >
             Nueva Receta
           </button>

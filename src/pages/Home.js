@@ -1,24 +1,24 @@
 import CardItem from "../components/CardItem"
-import React, { useState } from 'react';
+import React from 'react';
 
-function Home({recetas}) {
+function Home({recipes}) {
       return (
         <div className="container mt-4">
       <h2 style={{ paddingBottom: '20px', fontWeight: 'bold' }}>Recetas Disponibles</h2>
       <div className="row">
-        {recetas.length > 0 ? (
-          recetas.map((receta, idx) => {
+        {recipes?.length > 0 ? (
+          recipes.map((recipe, idx) => {
   const imageSrc =
-    receta.image instanceof File
-      ? URL.createObjectURL(receta.image)
-      : receta.image;
+    recipe.image instanceof File
+      ? URL.createObjectURL(recipe.image)
+      : recipe.image;
 
   return (
     <div className="col-md-4 mb-4" key={idx}>
       <CardItem
-        title={receta.title}
-        ingredients={receta.ingredients}
-        preparation={receta.preparation}
+        title={recipe.title}
+        ingredients={recipe.ingredients}
+        preparation={recipe.preparation}
         image={imageSrc}
       />
     </div>

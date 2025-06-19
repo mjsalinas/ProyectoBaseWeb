@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../api/authServices'; 
 import {supabase} from '../utils/supabaseClient';
 
-useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            // Si ya hay un usuario en localStorage, redirijo al inicio
-            navigate('/');
-        }
-    }, [navigate]);
 
 function Login() {
     const [email, setEmail] = useState('');

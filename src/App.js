@@ -4,24 +4,24 @@ import TopNavbar from './components/TopNavbar';
 import SideNavbar from './components/SideNavbar';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Recetas from './pages/masters/create_Recetas/Recetas';
+import Recipes from './pages/masters/create_Recetas/Recipes';
 import Register from './pages/masters/Register';
-import { getALLRecetas } from './api/recetasServices';
+import { getALLRecipes } from './api/recetasServices';
 
 
 function App() {
-    const [recetas, setRecetas] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     useEffect(()=>{
-        const fetchRecetas= async()=>{
+        const fetchRecipes= async()=>{
         try{
-            const {data}= await getALLRecetas();
-            setRecetas(data);
+            const {data}= await getALLRecipes();
+            setRecipes(data);
             console.log(data); 
         }catch(err){
             console.log("Error al obtener informacion:", err);
         }
     }
-    fetchRecetas();
+    fetchRecipes();
    }, [])
     return (
         <Router>
@@ -33,8 +33,8 @@ function App() {
                         <TopNavbar />
                         <div style={{ marginTop: '70px' }}></div>
                             <Routes>
-                                <Route path="/" element={<Home recetas={recetas} />} />
-                                <Route path="/recetas" element={<Recetas recetas={recetas} setRecetas={setRecetas} />} />
+                                <Route path="/" element={<Home recetas={recipes} />} />
+                                <Route path="/recipes" element={<Recipes recipes={recipes} setRecipes={setRecipes} />} />
 
                             </Routes>
                         </div>
