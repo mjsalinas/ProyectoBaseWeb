@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Recipes from './pages/masters/create_Recetas/Recipes';
 import Register from './pages/masters/Register';
-import { getALLRecipes } from './api/recetasServices';
+import { getALLRecipes } from './api/recipesServices';
 
 
 function App() {

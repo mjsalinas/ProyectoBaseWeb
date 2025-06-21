@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../Recetas.css";
-import { createNewRecipes } from "../../../api/recetasServices";
-import { updatedRecipes } from "../../../api/recetasServices";
+import { createNewRecipes } from "../../../api/recipesServices";
+import { updateRecipes } from "../../../api/recipesServices";
+import { deleteRecipes } from "../../../api/recipesServices";
+import { getALLRecipes } from "../../../api/recipesServices";
 import { supabase } from "../../../utils/supabaseClient";
 
     function Recipes({recipes, setRecipes}) {
@@ -28,8 +30,8 @@ import { supabase } from "../../../utils/supabaseClient";
         const updatedRecipes = recipes.filter((recipes, index) => index !== id);
         setRecipes(updatedRecipes);
         if (editIndex === id) {
-      setEditIndex(null);
-      setForm();
+        setEditIndex(null);
+        setForm();
     }
     };
 
@@ -37,30 +39,31 @@ import { supabase } from "../../../utils/supabaseClient";
         e.preventDefault();
         try{
         if (editIndex !== null) {
-            const{data}= await updatedRecipes(recipes[editIndex].id, form);
-            console.log("Receta actualizada", data);
+        const{data}= await updateRecipes(recipes[editIndex].id, form);
+        console.log("Receta actualizada", data);
         const updated = [...recipes];    
         updated[editIndex] = form;
         setRecipes(updated);
         setEditIndex(null);
         }  else {
         // Modo creación
+        console.log(form);
         const res = await createNewRecipes(form);
+        alert("Receta creada exitosamente")
         setRecipes([...recipes, form]);
-        console.log("Receta creada", data);
+        console.log("Receta creada", res);
         
       }
     } catch (err){
       alert("error al agregar receta");
       console.log(err);
     } finally {
-      setForm({
+        setForm({
         image: '',
-      title: '',
-      ingredients: '',
-      preparation: ''
-      });
-      
+        title: '',
+        ingredients: '',
+        preparation: ''
+        });
         }
 };
   

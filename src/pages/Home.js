@@ -12,7 +12,6 @@ function Home({recipes}) {
     recipe.image instanceof File
       ? URL.createObjectURL(recipe.image)
       : recipe.image;
-
   return (
     <div className="col-md-4 mb-4" key={idx}>
       <CardItem
